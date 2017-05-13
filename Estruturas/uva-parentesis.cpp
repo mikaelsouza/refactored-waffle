@@ -2,6 +2,8 @@
 #include <stack>
 #include <cstring>
 
+#define MAX_SIZE 130
+
 bool analise_parentesis(char* entrada, int tamanho_entrada){
 
     int i;
@@ -30,7 +32,7 @@ int main(){
 
     int qnt_entradas;
     int tamanho_entrada;
-    char s[140];
+    char s[MAX_SIZE];
 
     // Especificamente para o problema..//
     std::cin >> qnt_entradas;
@@ -40,7 +42,7 @@ int main(){
     while(qnt_entradas > 0){
 
         // Especificamente para o problema..//
-        fgets(s, 140, stdin);
+        fgets(s, MAX_SIZE, stdin);
         tamanho_entrada = strlen(s) - 1;
         //..................................//
 
