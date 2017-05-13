@@ -1,51 +1,52 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include <vector>
 
 int main(){
-    
+
     int i;
     int tamanho;
     int numero_extraido;
-    std::list<int> lista_numeros;
-    std::vector<int> cartas_descartadas;
-    
+    int cartas_descartadas[50];
+    int pos_cartas_descartadas;
+
+    std::list<int> lista_cartas;
     std::cin >> tamanho;
+
     while(tamanho > 0){
-        
+        pos_cartas_descartadas = 0;
         // Cria uma lista de numeros de 1 até o tamanho
         // Inserindo no inicio começando do maior número
         // Até 1.
         while(tamanho > 0){
-            lista_numeros.push_front(tamanho);
+            lista_cartas.push_front(tamanho);
             tamanho -= 1;
         }
 
-        while(lista_numeros.size() > 1){
+        while(lista_cartas.size() > 1){
             // Remove o número da frente
-            numero_extraido = lista_numeros.front();
-            lista_numeros.pop_front();
-            cartas_descartadas.push_back(numero_extraido);
+            numero_extraido = lista_cartas.front();
+            lista_cartas.pop_front();
+            cartas_descartadas[pos_cartas_descartadas] = numero_extraido;
+            pos_cartas_descartadas += 1;
 
             // Coloca o próximo no final
-            lista_numeros.push_back(lista_numeros.front());
-            lista_numeros.pop_front();
+            lista_cartas.push_back(lista_cartas.front());
+            lista_cartas.pop_front();
         }
-        
+
         // Impressão na tela
         std::cout << "Discarded cards: ";
 
-        for(i = 0; i < cartas_descartadas.size() - 1; i++){
+        for(i = 0; i < pos_cartas_descartadas - 1; i++){
             std::cout << cartas_descartadas[i] << ", ";
         }
         std::cout << cartas_descartadas[i] << std::endl;
 
-        std::cout << "Remaining card: " << lista_numeros.front() << std::endl;
+        std::cout << "Remaining card: " << lista_cartas.front() << std::endl;
 
         // Limpa estruturas para próxima entrada;
-        lista_numeros.clear();
-        cartas_descartadas.clear();
+        lista_cartas.clear();
         std::cin >> tamanho;
     }
 }

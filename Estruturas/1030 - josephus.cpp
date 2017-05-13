@@ -7,31 +7,38 @@ int main(){
     int qnt_casos;
     int saltos;
     int i;
-    int j;
+    int caso_atual;
 
+    std::vector<int> lista_individuos;
     std::cin >> qnt_casos;
 
-    j = 0;
+    caso_atual = 1;
 
-    while(j < qnt_casos){
+    while(caso_atual <= qnt_casos){
+        // Leitura das quantidade de indivíduos e o tamanho do salto.
         std::cin >> qnt_individuos >> saltos;
-        std::vector<int> lista_individuos(qnt_individuos);
 
-        iota(begin(lista_individuos), end(lista_individuos), 1);
+        // Criando lista de pessoas com seus respectivos números.
+        for(i = 1; i <= qnt_individuos; i++){
+            lista_individuos.push_back(i);
+        }
+
+        // Contando o elemento atual como um salto e tratando o caso
+        // do tamanho do salto ser maior que a vector de indivíduos.
         i = saltos - 1;
         i = i % lista_individuos.size();
 
+        // Enquanto houver mais de 1 pessoa, eliminar a pessoa da posicao
+        // i e calcular o próximo alvo.
         while(lista_individuos.size() > 1){
             lista_individuos.erase(lista_individuos.begin() + i);
-            i += (saltos - 1);
+            i += saltos - 1;
             i = i % lista_individuos.size();
         }
 
-        for(auto v:lista_individuos){
-            std::cout << "Case " << j + 1 << ": " << v << std::endl;
-        }
-
-        j += 1;
+        // Imprime indivíduo remanescente, reseta estrutura.
+        std::cout << "Case " << caso_atual << ": " << lista_individuos[0] << std::endl;
+        lista_individuos.clear();
+        caso_atual += 1;
     }
-    return 0;
 }
