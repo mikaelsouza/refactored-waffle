@@ -1,7 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <iomanip>
-#include <stdio.h>
 
 int pessoas[20];
 
