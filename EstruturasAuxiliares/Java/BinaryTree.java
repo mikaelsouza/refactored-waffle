@@ -34,18 +34,4 @@ public class BinaryTree {
             }
         }
     }
-
-    public void printNodesInfix(){
-        infixRecursive(this.root);
-    }
-
-    private void infixRecursive(Node node){
-        if(node != null){
-            infixRecursive(node.leftChild);
-            System.out.println(node.value);
-            infixRecursive(node.rightChild);
-        }
-    }
-
 }
-

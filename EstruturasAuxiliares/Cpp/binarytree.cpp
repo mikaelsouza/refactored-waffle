@@ -15,6 +15,14 @@ public:
 
 class BinaryTree{
 
+  void deleteNode(Node *node){
+      if(node != NULL){
+          deleteNode(node->leftChild);
+          deleteNode(node->rightChild);
+          delete node;
+      }
+  }
+
 public:
     Node *root;
 
@@ -24,14 +32,6 @@ public:
 
     ~BinaryTree(){
         deleteNode(this->root);
-    }
-
-    void deleteNode(Node *node){
-        if(node != NULL){
-            deleteNode(node->leftChild);
-            deleteNode(node->rightChild);
-            delete node;
-        }
     }
 
     void insertElement(int value){
@@ -56,16 +56,6 @@ public:
                     }
                 }
             }
-        }
-    }
-    void printNodesInfix(){
-        infixRecursive(this->root);
-    }
-    void infixRecursive(Node *node){
-        if(node != NULL){
-            infixRecursive(node->leftChild);
-            std::cout << node->value << std::endl;
-            infixRecursive(node->rightChild);
         }
     }
 };
