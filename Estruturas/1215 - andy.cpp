@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <unordered_map>
+#include <map>
 #include <algorithm>
 
 using namespace std;
 
-void limpa_palavras(string p, unordered_map<string, int> &palavras){
+void limpa_palavras(string p, map<string, int> &palavras){
 
     int i;
     string aux = "";
@@ -32,7 +32,7 @@ void limpa_palavras(string p, unordered_map<string, int> &palavras){
 
 int main(){
 
-    unordered_map<string, int> dicionario;
+    map<string, int> dicionario;
     string aux;
     vector<string> linhas;
 
@@ -51,16 +51,10 @@ int main(){
 
     linhas.clear();
 
-    // Ordena e imprime na tela
+    // Imprime na tela
 
     for(auto v: dicionario){
-        linhas.push_back(v.first);
-    }
-
-    sort(linhas.begin(), linhas.end());
-    
-    for(auto v: linhas){
-        cout << v << endl;
+        cout << v.first << endl;
     }
 
     return 0;
