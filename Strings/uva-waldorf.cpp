@@ -27,8 +27,8 @@ void buscaElementos(std::string palavra, std::vector<std::string> matriz){
             if(matriz[i][j] == palavra[0]){
                 if(buscaAuxiliar(palavra, matriz, i, j, 0, 1) or buscaAuxiliar(palavra, matriz, i, j, 1, 0) or
                 buscaAuxiliar(palavra, matriz, i, j, 1, 1) or buscaAuxiliar(palavra, matriz, i, j, -1, 0) or
-                buscaAuxiliar(palavra, matriz, i, j, 0, -1) or buscaAuxiliar(palavra, matriz, i, j, -1, -1 or
-                buscaAuxiliar(palavra, matriz, i, j, 1, -1) or buscaAuxiliar(palavra, matriz, i, j, -1, 1))){
+                buscaAuxiliar(palavra, matriz, i, j, 0, -1) or buscaAuxiliar(palavra, matriz, i, j, -1, -1) or
+                buscaAuxiliar(palavra, matriz, i, j, 1, -1) or buscaAuxiliar(palavra, matriz, i, j, -1, 1)){
                     std::cout << i + 1 << " " << j + 1 << std::endl;
                     return;
                 }
@@ -56,14 +56,15 @@ int main(){
     int qnt_casos;
     int linhas, colunas;
     int qnt_buscas;
-
-    std::cin >> qnt_casos;
-    std::cin >> linhas >> colunas;
+    std::string linha_branca;
     std::string aux;
+    std::vector<std::string> matriz;
+
+    scanf("%d", &qnt_casos);
 
     while(qnt_casos > 0){
 
-        std::vector<std::string> matriz;
+        scanf("%d %d", &linhas, &colunas);
 
         for(i = 0; i < linhas; i++){
             std::cin >> aux;
@@ -77,7 +78,10 @@ int main(){
             buscaElementos(lower(aux), matriz);
             qnt_buscas -= 1;
         }
-        std::cout << std::endl;
+        matriz.clear();
+        if(qnt_casos > 1){
+            std::cout << std::endl;
+        }
         qnt_casos -= 1;
     }
 }
