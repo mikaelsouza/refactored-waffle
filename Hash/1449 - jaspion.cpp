@@ -17,11 +17,13 @@ std::vector<std::string> splitLine(std::string linha){
             palavra = "";
         }
     }
+    palavras.push_back(palavra);
     return palavras;
 }
 
 int main(){
 
+    int i;
     int qnt_casos;
     int traducoes;
     int linhas_musicais;
@@ -50,19 +52,22 @@ int main(){
         while(linhas_musicais > 0){
             getline(std::cin, letra_musica);
             palavras = splitLine(letra_musica);
-            for (auto v : palavras){
-                std::cout << v << std::endl;
-            }
-            for(int i = 0; i < palavras.size(); i++){
+            for(i = 0; i < palavras.size() - 1; i++){
                 if(dicionario[palavras[i]] == ""){
-                    std::cout << palavras[i] << " ";
+                   std::cout << palavras[i] << " ";
                 } else {
-                    std::cout << dicionario[palavras[i]] << " ";
+                   std::cout << dicionario[palavras[i]] << " ";
                 }
+            }
+            if(dicionario[palavras[i]] == ""){
+               std::cout << palavras[i];
+            } else {
+               std::cout << dicionario[palavras[i]];
             }
             std::cout << std::endl;
             linhas_musicais -= 1;
         }
+        std::cout << std::endl;
         dicionario.clear();
         qnt_casos -= 1;
     }
