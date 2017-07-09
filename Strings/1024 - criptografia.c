@@ -2,13 +2,13 @@
 
 int stringlen(char *texto){
     int size;
-    for(size = 0; texto[size] != '\n'; size++);
+    for(size = 0; texto[size] != '\0'; size++);
     return size;
 }
 
 void deslocamentoDireita(char* texto){
     int i;
-    int tam_texto = stringlen(texto);
+    int tam_texto = stringlen(texto) - 1;
     for(i = 0; i < tam_texto; i++){
         if((texto[i] >= 'A' && texto[i] <= 'Z') || (texto[i] >= 'a' && texto[i] <= 'z')){
             texto[i] += 3;
@@ -19,7 +19,7 @@ void deslocamentoDireita(char* texto){
 void inversao(char* texto){
     char aux;
     int i;
-    int tam_texto = stringlen(texto);
+    int tam_texto = stringlen(texto) - 1;
     for(i = 0; i < tam_texto / 2; i++){
         aux = texto[i];
         texto[i] = texto[tam_texto - 1 - i];
@@ -29,7 +29,7 @@ void inversao(char* texto){
 
 void deslocamentoEsquerda(char* texto){
     int i;
-    int tam_texto = stringlen(texto);
+    int tam_texto = stringlen(texto) - 1;
     for(i = tam_texto / 2; i < tam_texto; i++){
         texto[i] -= 1;
     }
